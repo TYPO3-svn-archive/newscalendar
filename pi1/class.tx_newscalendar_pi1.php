@@ -133,7 +133,9 @@ class tx_newscalendar_pi1 extends tslib_pibase {
 
         $GLOBALS['TSFE']->additionalHeaderData['tx_newscalendar_inc']
                 =   "\n" . 
-                $ie7compat . 
+                $ie7compat ;
+        $GLOBALS['TSFE']->additionalFooterData['tx_newscalendar_inc']
+                =   "\n" .  
                 "<!-- EXT:newscalendar: Javascript and CSS include files : START --> " . "\n" .
                 '<link href="' . $this->cssCalendar	 . '" rel="stylesheet" type="text/css" />' . "\n" .
                 '<link href="' . $this->cssContextMenu . '" rel="stylesheet" type="text/css" />' . "\n" .
@@ -684,9 +686,6 @@ class tx_newscalendar_pi1 extends tslib_pibase {
         $contextScript .= "\t" . "});" . "\n";
         $contextScript .= "\t" . "</script>" . "\n";
 
-        // Join Tips
-        $contextScript = $contextScript_tips . $contextScript;
-
         /*
 	* Set tt_news to the previous id so it sticks on navigation.
         */
@@ -778,7 +777,10 @@ class tx_newscalendar_pi1 extends tslib_pibase {
         // gregory goidin - rvvn
         // now, the render method is set in the main to prevent using useless code
 
-        return $this->pi_wrapInBaseClass($calendar.$contextScript);
+        $GLOBALS['TSFE']->additionalFooterData['tx_newscalendar_inc2'] = $contextScript;
+        
+        // Join HTML Tips
+        return $this->pi_wrapInBaseClass($calendar.$contextScript_tips);
 
     }
 
