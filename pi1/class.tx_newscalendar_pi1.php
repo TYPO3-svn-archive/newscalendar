@@ -133,15 +133,17 @@ class tx_newscalendar_pi1 extends tslib_pibase {
 
         $GLOBALS['TSFE']->additionalHeaderData['tx_newscalendar_inc']
                 =   "\n" . 
-                $ie7compat ;
-        $GLOBALS['TSFE']->additionalFooterData['tx_newscalendar_inc']
-                =   "\n" .  
-                "<!-- EXT:newscalendar: Javascript and CSS include files : START --> " . "\n" .
+								"<!-- EXT:newscalendar: CSS include files : START --> " . "\n" .
                 '<link href="' . $this->cssCalendar	 . '" rel="stylesheet" type="text/css" />' . "\n" .
                 '<link href="' . $this->cssContextMenu . '" rel="stylesheet" type="text/css" />' . "\n" .
+                $ie7compat ;
+                '<!-- EXT:newscalendar: CSS include files : END --> ' . "\n";
+        $GLOBALS['TSFE']->additionalFooterData['tx_newscalendar_inc']
+                =   "\n" .  
+                "<!-- EXT:newscalendar: Javascript  files : START --> " . "\n" .
                 $jGoogleCanvas . $jsJQuery . $jsJQueryTooltip .
                 '<script type="text/javascript" src="' . $this->jsNewscalendar . '"></script>' . "\n" .
-                '<!-- EXT:newscalendar: Javascript and CSS include files : END --> ' . "\n";
+                '<!-- EXT:newscalendar: Javascript include files : END --> ' . "\n";
 
         /*
 		* Set template file for list view
